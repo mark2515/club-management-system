@@ -23,11 +23,12 @@ public class UserController {
 
     @PostMapping
     public Integer save(@RequestBody User user) {
+
         return userService.save(user);
     }
 
     @GetMapping
-    public List<User> index() {
+    public List<User> findAll() {
         List<User> all = userMapper.findAll();
         return all;
     }
@@ -50,4 +51,5 @@ public class UserController {
         res.put("total", total);
         return res;
     }
+
 }
