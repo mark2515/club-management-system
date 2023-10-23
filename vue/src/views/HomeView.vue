@@ -118,7 +118,7 @@
 <script>
 
 export default {
-  name: 'Home',
+  name: 'HomeView',
   data() {
     const item = {
       date: '2016-05-02',
