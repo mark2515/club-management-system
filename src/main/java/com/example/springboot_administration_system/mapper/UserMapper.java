@@ -1,11 +1,12 @@
 package com.example.springboot_administration_system.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.springboot_administration_system.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
-
-public interface UserMapper {
+@Mapper
+public interface UserMapper extends BaseMapper<User> {
 
     @Select("SELECT * from sys_user")
     List<User> findAll();

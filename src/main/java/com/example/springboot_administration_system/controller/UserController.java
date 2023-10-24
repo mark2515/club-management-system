@@ -22,9 +22,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public Integer save(@RequestBody User user) {
+    public boolean save(@RequestBody User user) {
 
-        return userService.save(user);
+        return userService.saveUser(user);
     }
 
     @GetMapping
