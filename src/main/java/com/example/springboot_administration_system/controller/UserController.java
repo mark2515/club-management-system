@@ -1,5 +1,8 @@
 package com.example.springboot_administration_system.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot_administration_system.entity.User;
 import com.example.springboot_administration_system.mapper.UserMapper;
 import com.example.springboot_administration_system.service.UserService;
@@ -29,27 +32,32 @@ public class UserController {
 
     @GetMapping
     public List<User> findAll() {
-        List<User> all = userMapper.findAll();
-        return all;
+        return userService.list();
     }
 
     @DeleteMapping("/{id}")
-    public Integer delete(@PathVariable Integer id) {
-        return userMapper.deleteById(id);
+    public boolean delete(@PathVariable Integer id) {
+        return userService.removeById(id);
     }
 
     @GetMapping("/page")
-    public Map<String, Object> findPage(@RequestParam Integer pageNum,
-                                        @RequestParam Integer pageSize,
-                                        @RequestParam String username) {
-        pageNum = (pageNum - 1) * pageSize;
-        username = "%" + username + "%";
-        List<User> data = userMapper.selectPage(pageNum, pageSize, username);
-        Integer total = userMapper.selectTotal(username);
-        Map<String, Object> res = new HashMap<>();
-        res.put("data", data);
-        res.put("total", total);
-        return res;
+    public IPage<User> findPage(@RequestParam Integer pageNum,
+                                @RequestParam Integer pageSize,
+                                @RequestParam(defaultValue = "") String username,
+                                @RequestParam(defaultValue = "") String nickname,
+                                @RequestParam(defaultValue = "") String address) {
+        IPage<User> page = new Page<>(pageNum, pageSize);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        if (!"".equals(username)) {
+            queryWrapper.like("username", username);
+        }
+        if (!"".equals(nickname)) {
+            queryWrapper.like("nickname", nickname);
+        }
+        if (!"".equals(address)) {
+            queryWrapper.like("address", address);
+        }
+        return userService.page(page, queryWrapper);
     }
 
 }
