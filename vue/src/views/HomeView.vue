@@ -167,8 +167,6 @@
 
 <script>
 
-import request from "@/utils/request";
-
 export default {
   name: 'HomeView',
   data() {
@@ -209,7 +207,7 @@ export default {
       }
     },
     load() {
-      request.get("http://localhost:9090/user/page?pageNum="+this.pageNum+
+      this.request.get("http://localhost:9090/user/page?pageNum="+this.pageNum+
           "&pageSize="+this.pageSize+"&username="+this.username+
           "&email="+this.email +"&address="+this.address).then(res=> {
         console.log(res)
@@ -218,7 +216,7 @@ export default {
       })
     },
     save() {
-      request.post("http://localhost:9090/user", this.form).then(res => {
+      this.request.post("http://localhost:9090/user", this.form).then(res => {
         if (res) {
           this.$message.success("保存成功")
           this.dialogFormVisible = false
@@ -237,7 +235,7 @@ export default {
       this.dialogFormVisible = true
     },
     del(id) {
-      request.delete("http://localhost:9090/user/" + id).then(res => {
+      this.request.delete("http://localhost:9090/user/" + id).then(res => {
         if (res) {
           this.$message.success("删除成功")
           this.load()
@@ -252,7 +250,7 @@ export default {
     },
     delBatch() {
       let ids = this.multipleSelection.map(v => v.id)  // [{}, {}, {}] => [1,2,3]
-      request.post("http://localhost:9090/user/del/batch", ids).then(res => {
+      this.request.post("http://localhost:9090/user/del/batch", ids).then(res => {
         if (res) {
           this.$message.success("批量删除成功")
           this.load()
