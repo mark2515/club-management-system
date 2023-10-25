@@ -28,6 +28,16 @@ export default {
   computed: {
     currentPathName () {
       return this.$store.state.currentPathName;　　//需要监听的数据
+    },
+    computed: {
+      currentPathName () {
+        return this.$store.state.currentPathName;　　//需要监听的数据
+      }
+    },
+    watch: {
+      currentPathName (newVal, oldVal) {
+        console.log(newVal)
+      }
     }
   }
 }
