@@ -9,10 +9,10 @@ const routes = [
     path: '/',
     name: 'Manage',
     component: () => import('../views/Manage'),
+    redirect: "/home",
     children: [
-      {
-        path: '/', name: 'Manage', component: () => import('../views/Manage')
-      }
+        { path: 'user', name: 'User', component: () => import('../views/User') },
+        { path: 'home', name: 'Home', component: () => import('../views/Home') }
     ]
   },
   {
