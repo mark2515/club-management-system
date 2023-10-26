@@ -1,10 +1,13 @@
 package com.example.springboot_administration_system.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
+import java.sql.Timestamp;
 
 @Data
 @TableName(value="sys_user")
@@ -18,5 +21,5 @@ public class User {
     private String email;
     private String phone;
     private String address;
-
+    private Timestamp createTime;
 }
