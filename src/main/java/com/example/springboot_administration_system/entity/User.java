@@ -22,4 +22,5 @@ public class User {
     private String phone;
     private String address;
     private Timestamp createTime;
+    private String avatarUrl;
 }
