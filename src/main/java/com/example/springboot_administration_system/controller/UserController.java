@@ -1,5 +1,7 @@
 package com.example.springboot_administration_system.controller;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -10,9 +12,11 @@ import com.example.springboot_administration_system.mapper.UserMapper;
 import com.example.springboot_administration_system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
@@ -124,19 +128,11 @@ public class UserController {
 
     }
 
-    /**
-     * excel 导入
-     * @param file
-     * @throws Exception
-     */
     @PostMapping("/import")
     public Boolean imp(MultipartFile file) throws Exception {
         InputStream inputStream = file.getInputStream();
         ExcelReader reader = ExcelUtil.getReader(inputStream);
-        // 方式1：(推荐) 通过 javabean的方式读取Excel内的对象，但是要求表头必须是英文，跟javabean的属性要对应起来
-//        List<User> list = reader.readAll(User.class);
 
-        // 方式2：忽略表头的中文，直接读取表的内容
         List<List<Object>> list = reader.read(1);
         List<User> users = CollUtil.newArrayList();
         for (List<Object> row : list) {
