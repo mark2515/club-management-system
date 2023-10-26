@@ -22,9 +22,9 @@
         <el-button type="danger" slot="reference">批量删除 <i class="el-icon-remove-outline"></i></el-button>
       </el-popconfirm>
       <el-upload action="http://localhost:9090/user/import" :show-file-list="false" accept="xlsx" :on-success="handleExcelImportSuccess" style="display: inline-block">
-  	<el-button type="primary" class="ml-5">导入 <i class="el-icon-bottom"></i></el-button>
+  	    <el-button type="primary" class="ml-5">导入 <i class="el-icon-bottom"></i></el-button>
       </el-upload>
-	    
+
       <el-button type="primary" @click="exp" class="ml-5">导出 <i class="el-icon-top"></i></el-button>
     </div>
 
@@ -99,7 +99,7 @@ export default {
       tableData: [],
       total: 0,
       pageNum: 1,
-      pageSize: 2,
+      pageSize: 10,
       username: "",
       email: "",
       address: "",
