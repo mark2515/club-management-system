@@ -9,22 +9,22 @@
   >
     <div style="height: 60px; line-height: 60px; text-align: center">
       <img src="../assets/logo.png" alt="" style="width: 20px; position: relative; top: 5px; right: 5px">
-      <b style="color: white" v-show="logoTextShow">后台管理系统</b>
+      <b style="color: white" v-show="logoTextShow">Administration</b>
     </div>
     <el-menu-item index="/home">
       <template slot="title">
         <i class="el-icon-house"></i>
-        <span slot="title">主页</span>
+        <span slot="title">Home</span>
       </template>
     </el-menu-item>
     <el-submenu index="2">
       <template slot="title">
         <i class="el-icon-menu"></i>
-        <span slot="title">系统管理</span>
+        <span slot="title">System Management</span>
       </template>
       <el-menu-item index="/user">
         <i class="el-icon-s-custom"></i>
-        <span slot="title">用户管理</span>
+        <span slot="title">User Management</span>
       </el-menu-item>
     </el-submenu>
   </el-menu>

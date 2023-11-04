@@ -28,15 +28,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    // 新增和修改
     @PostMapping
     public boolean save(@RequestBody User user) {
-        // 新增或者更新
         return userService.saveUser(user);
     }
 
-    // 查询所有数据
     @GetMapping
     public List<User> findAll() {
         return userService.list();
@@ -52,26 +48,6 @@ public class UserController {
         return userService.removeByIds(ids);
     }
 
-    // 分页查询
-    //  接口路径：/user/page?pageNum=1&pageSize=10
-    // @RequestParam接受
-//    limit第一个参数 = (pageNum - 1) * pageSize
-    // pageSize
-//    @GetMapping("/page")
-//    public Map<String, Object> findPage(@RequestParam Integer pageNum,
-//                                        @RequestParam Integer pageSize,
-//                                        @RequestParam String username) {
-//        pageNum = (pageNum - 1) * pageSize;
-//        username = "%" + username + "%";
-//        List<User> data = userMapper.selectPage(pageNum, pageSize, username);
-//        Integer total = userMapper.selectTotal(username);
-//        Map<String, Object> res = new HashMap<>();
-//        res.put("data", data);
-//        res.put("total", total);
-//        return res;
-//    }
-
-    // 分页查询 - mybatis-plus的方式
     @GetMapping("/page")
     public IPage<User> findPage(@RequestParam Integer pageNum,
                                 @RequestParam Integer pageSize,
@@ -92,18 +68,11 @@ public class UserController {
         return userService.page(page, queryWrapper);
     }
 
-    /**
-            * 导出接口
-     */
     @GetMapping("/export")
     public void export(HttpServletResponse response) throws Exception {
-        // 从数据库查询出所有的数据
         List<User> list = userService.list();
-        // 通过工具类创建writer 写出到磁盘路径
-//        ExcelWriter writer = ExcelUtil.getWriter(filesUploadPath + "/用户信息.xlsx");
-        // 在内存操作，写出到浏览器
         ExcelWriter writer = ExcelUtil.getWriter(true);
-        //自定义标题别名
+
         writer.addHeaderAlias("username", "用户名");
         writer.addHeaderAlias("password", "密码");
         writer.addHeaderAlias("nickname", "昵称");
@@ -113,10 +82,8 @@ public class UserController {
         writer.addHeaderAlias("createTime", "创建时间");
         writer.addHeaderAlias("avatarUrl", "头像");
 
-        // 一次性写出list内的对象到excel，使用默认样式，强制输出标题
         writer.write(list, true);
 
-        // 设置浏览器响应的格式
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8");
         String fileName = URLEncoder.encode("用户信息", "UTF-8");
         response.setHeader("Content-Disposition", "attachment;filename=" + fileName + ".xlsx");

@@ -36,11 +36,10 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
-// 路由守卫
 router.beforeEach((to, from, next) => {
-  localStorage.setItem("currentPathName", to.name)  // 设置当前的路由名称，为了在Header组件中去使用
-  store.commit("setPath")  // 触发store的数据更新
-  next()  // 放行路由
+  localStorage.setItem("currentPathName", to.name)
+  store.commit("setPath")
+  next()
 })
 
 export default router
