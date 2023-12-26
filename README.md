@@ -1,8 +1,8 @@
 # springboot-administration-system
 
-Built the backend infrastructure with Spring Boot, enabling CRUD operations for student information and facilitating data interaction via RESTful APIs, ensuring a high level of maintainability and scalability for the system
-Employed MySQL as the robust and reliable database solution, effectively handling data storage and retrieval needs with optimal performance
-Designed and constructed an inviting front-end interface with React, focusing on user-friendliness through intuitive navigation and an aesthetically pleasing layout
+Built the backend infrastructure with Spring Boot, enabling CRUD operations for student information and facilitating data interaction via RESTful APIs, ensuring a high level of maintainability and scalability for the system.
+Employed MySQL as the robust and reliable database solution, effectively handling data storage and retrieval needs with optimal performance.
+Designed and constructed an inviting front-end interface with React, focusing on user-friendliness through intuitive navigation and an aesthetically pleasing layout.
 
 # Development Environment
 
