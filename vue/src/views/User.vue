@@ -66,7 +66,7 @@
     </div>
 
     <el-dialog title="User Information" :visible.sync="dialogFormVisible" width="30%" >
-      <el-form label-width="80px" size="small">
+      <el-form label-width="100px" size="small">
         <el-form-item label="User Name">
           <el-input v-model="form.username" autocomplete="off"></el-input>
         </el-form-item>
