@@ -70,19 +70,19 @@ public class UserController {
         List<User> list = userService.list();
         ExcelWriter writer = ExcelUtil.getWriter(true);
 
-        writer.addHeaderAlias("username", "用户名");
-        writer.addHeaderAlias("password", "密码");
-        writer.addHeaderAlias("nickname", "昵称");
-        writer.addHeaderAlias("email", "邮箱");
-        writer.addHeaderAlias("phone", "电话");
-        writer.addHeaderAlias("address", "地址");
-        writer.addHeaderAlias("createTime", "创建时间");
-        writer.addHeaderAlias("avatarUrl", "头像");
+        writer.addHeaderAlias("username", "UserName");
+        writer.addHeaderAlias("password", "Password");
+        writer.addHeaderAlias("nickname", "Nickname");
+        writer.addHeaderAlias("email", "Email");
+        writer.addHeaderAlias("phone", "Phone");
+        writer.addHeaderAlias("address", "Address");
+        writer.addHeaderAlias("createTime", "CreateTime");
+        writer.addHeaderAlias("avatarUrl", "AvatarURL");
 
         writer.write(list, true);
 
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8");
-        String fileName = URLEncoder.encode("用户信息", "UTF-8");
+        String fileName = URLEncoder.encode("UserInformation", "UTF-8");
         response.setHeader("Content-Disposition", "attachment;filename=" + fileName + ".xlsx");
 
         ServletOutputStream out = response.getOutputStream();
