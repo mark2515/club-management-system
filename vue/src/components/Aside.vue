@@ -9,7 +9,7 @@
   >
     <div style="height: 60px; line-height: 60px; text-align: center">
       <img src="../assets/logo.png" alt="" style="width: 20px; position: relative; top: 5px; right: 5px">
-      <b style="color: white" v-show="logoTextShow">Administration</b>
+      <b style="color: white" v-show="logoTextShow">Club System</b>
     </div>
     <el-menu-item index="/home">
       <template slot="title">
