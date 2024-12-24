@@ -1,8 +1,8 @@
 # club-management-system
 [ Group project for CMPT354 Database Systems I ]
-- Built the backend infrastructure with Spring Boot, enabling CRUD operations for club members' information and facilitating data interaction via RESTful APIs, ensuring a high level of maintainability and scalability for the system.
-- Employed MySQL as the robust and reliable database solution, effectively handling data storage and retrieval needs with optimal performance.
-- Designed and constructed an inviting front-end interface with Vue, focusing on user-friendliness through intuitive navigation and an aesthetically pleasing layout.
+- Design a user-centric, responsive UI for the club platform using Vue and Ant Design, focusing on usability to enhance engagement and member satisfaction.
+- Utilized Spring Boot and Spring MVC to construct the backend framework; Built and managed dependencies of the project by Maven, and designed the database access object and service layer to facilitates interaction between the controller and database.
+- Modernize outdated JDBC data handling system by integrating Hibernate with MySQL, resulting in notable improvements in system performance and reliability.
 
 # Development Environment
 
