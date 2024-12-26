@@ -20,28 +20,33 @@ export default {
     return {}
   },
   mounted() {
-    var chartDom = document.getElementById('main');
-    var myChart = echarts.init(chartDom);
     var option = {
       xAxis: {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: []
       },
       yAxis: {
         type: 'value'
       },
       series: [
         {
-          data: [150, 230, 224, 218, 135, 147, 260],
+          data: [],
           type: 'line'
         },
         {
-          data: [150, 230, 224, 218, 135, 147, 260],
+          data: [],
           type: 'bar'
         }
       ]
     };
-    myChart.setOption(option);
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+    this.request.get("http://localhost:9090/echarts/example").then(res => {
+      option.xAxis.data = res.data.x;
+      option.series[0].data = res.data.y;
+      option.series[1].data = res.data.y;
+      myChart.setOption(option);
+    })
 
     // pie charts
     var pieOption = {
