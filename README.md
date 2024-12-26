@@ -42,12 +42,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 To establish the database connection using the default configuration in the **application.yml** file located in the **src\main\resources** directory, please follow the steps outlined below:
 
 1. Create a local MySQL database
-- Begin by creating a new database named club. This database will be used for managing user data. You can create the database using the following SQL command:
+
+Begin by creating a new database named club. This database will be used for managing user data. You can create the database using the following SQL command:
 ```
 CREATE DATABASE club;
 ```
 2. Create the sys_user table
-- With the club database selected, execute the following SQL command to create a sys_user table. This table will store user information with various attributes such as username, password, and contact details.
+
+With the club database selected, execute the following SQL command to create a sys_user table. This table will store user information with various attributes such as username, password, and contact details.
 
 ```
 CREATE TABLE sys_user (
@@ -63,7 +65,8 @@ CREATE TABLE sys_user (
 );
 ```
 3. Connect to the database
-- Ensure that your application.yml contains the correct database connection settings corresponding to the database club. Update the credentials if necessary to match your local MySQL setup.
+
+Ensure that your application.yml contains the correct database connection settings corresponding to the database club. Update the credentials if necessary to match your local MySQL setup.
 
 # Contributing
 If you want to contribute to this project, please fork this repository and create a pull request, or drop me an email at kha112@sfu.ca
