@@ -21,9 +21,14 @@ export default {
   },
   mounted() {
     var option = {
+      title: {
+        text: "Membership Statistics by Quarter",
+        subtext: "Line Chart",
+        left: "center"
+      },
       xAxis: {
         type: 'category',
-        data: []
+        data: ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"]
       },
       yAxis: {
         type: 'value'
@@ -41,10 +46,10 @@ export default {
     };
     var chartDom = document.getElementById('main');
     var myChart = echarts.init(chartDom);
-    this.request.get("http://localhost:9090/echarts/example").then(res => {
-      option.xAxis.data = res.data.x;
-      option.series[0].data = res.data.y;
-      option.series[1].data = res.data.y;
+    this.request.get("http://localhost:9090/echarts/members").then(res => {
+      //option.xAxis.data = res.data.x;
+      option.series[0].data = res.data;
+      option.series[1].data = res.data;
       myChart.setOption(option);
     })
 

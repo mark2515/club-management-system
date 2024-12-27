@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Data
 @TableName(value="sys_user")
@@ -21,6 +21,6 @@ public class User {
     private String email;
     private String phone;
     private String address;
-    private Timestamp createTime;
+    private Date createTime;
     private String avatarUrl;
 }
