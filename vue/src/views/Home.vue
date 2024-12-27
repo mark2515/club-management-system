@@ -62,7 +62,19 @@ export default {
       series: [
         {
           type: 'pie',
-          radius: '50%',
+          radius: '60%',
+          label:{
+            normal:{
+              show: true,
+              position: 'inner',
+              textStyle:{
+                fontWeight: 500,
+                fontSize: 12,
+                color: '#fff'
+              },
+              formatter: '{d}%'
+            }
+          },
           data: [],
           emphasis: {
             itemStyle: {
